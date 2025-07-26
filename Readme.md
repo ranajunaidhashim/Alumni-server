@@ -1,94 +1,97 @@
-```markdown
-# Alumni Management System
+# 🎓 Alumni Management System
 
-An end‑to‑end MERN‑style application to manage university/college alumni data, events, jobs, forums, galleries, and system settings. The monorepo contains two top‑level projects:
+An end‑to‑end **MERN stack** application to manage university/college alumni including events, jobs, forums, gallery, and system settings.
 
-```
+> ✅ This is a **monorepo** that contains both frontend and backend in a single repository:
 
+```bash
 Alumni Management System/
 ├── backend/   # Node.js + Express + Sequelize API
 ├── frontend/  # ReactJS client
-└── README.md  # ← you are here
-
-````
+└── README.md  # ← You are here
+```
 
 ---
 
 ## 🚀 Features
 
-- **Authentication & Authorization**  
-  - Signup, login, logout with JWT stored in HTTP‑only cookies  
-  - Role‑based access: public, alumni, admin
+### 🔐 Authentication & Authorization
 
-- **Admin Dashboard**  
-  - Summary counts (alumni, jobs, forums, events)  
-  - CRUD for users, courses, careers (jobs), events, forums, gallery images, system settings  
+* JWT-based login/signup with HTTP-only cookies
+* Role-based access: Public, Alumni, Admin
 
-- **Alumni Portal**  
-  - Register and await admin verification  
-  - View upcoming events, RSVP to events  
-  - Browse/post in forums  
-  - View job listings  
-  - Gallery & About pages  
-  - Manage own account & avatar  
+### 🛠️ Admin Dashboard
 
-- **File Uploads**  
-  - Profile avatars & gallery images via Multer  
-  - Served as static assets  
+* User, Career, Course, Event, Forum, Gallery & Settings Management
+* Summary Dashboard (Counts API)
+
+### 🙋 Alumni Portal
+
+* Register & wait for admin approval
+* RSVP to events
+* Browse/post in forums
+* View jobs
+* Manage own profile & avatar
+
+### 📤 File Uploads
+
+* Avatars and gallery images via Multer
+* Served via Express static middleware
 
 ---
 
-## 📁 Folder Structure
+## 📁 Project Structure
 
-```text
+```bash
 .
 ├── backend/
-│   ├── config/             # Sequelize config
-│   ├── controllers/        # Express route handlers
-│   ├── middlewares/        # Auth & error handling
-│   ├── models/             # Sequelize models & associations
-│   ├── public/             # Static (avatars, images)
-│   ├── routes/             # Express routers
-│   ├── utils/              # DB connection, mailer, file-upload
-│   ├── app.js              # Express app setup
+│   ├── config/             # DB & Mail config
+│   ├── controllers/        # Route controllers
+│   ├── middlewares/        # Auth, error handlers
+│   ├── models/             # Sequelize models
+│   ├── public/             # Static files (avatars/images)
+│   ├── routes/             # Express routes
+│   ├── utils/              # Helpers & upload/mailers
+│   ├── SqlDatabase/        # SQL Dump
+│   ├── app.js              # Express instance
 │   ├── index.js            # Server entry point
 │   └── package.json
 │
 └── frontend/
-    ├── public/             # Static HTML, icons
+    ├── public/             # Static assets
     ├── src/
-    │   ├── admin/          # Admin‐only pages/components
-    │   ├── components/     # Reusable UI components
-    │   ├── utils/          # globalurl, contexts
-    │   ├── App.jsx         # Main router & layout
+    │   ├── admin/          # Admin views
+    │   ├── components/     # Shared UI
+    │   ├── utils/          # Contexts, Global URL
+    │   ├── App.jsx         # Router & Layout
     │   └── main.jsx        # ReactDOM render
     └── package.json
-````
+```
 
 ---
 
-## ⚙️ Setup & Run
+## ⚙️ Getting Started
 
-### Prerequisites
+### ✅ Prerequisites
 
-* **Node.js** v16+
-* **MySQL** database
+* Node.js (v16+)
+* MySQL
 
-### 1. Clone & Install
+### 📦 Install Dependencies
 
 ```bash
 git clone https://github.com/ranajunaidhashim/Alumni-server.git
 cd Alumni-server
 ```
 
-#### a) Backend
+#### Backend
 
 ```bash
 cd backend
 npm install
 ```
 
-#### b) Frontend
+#### Frontend
 
 ```bash
 cd ../frontend
@@ -97,38 +100,39 @@ npm install
 
 ---
 
-### 2. Environment Variables
+### 🌐 Environment Setup
 
-Create a `.env` in `backend/`:
+Create a `.env` file inside `backend/`:
 
 ```dotenv
 DB_HOST=localhost
 DB_PORT=3306
 DB_NAME=alumni_db
 DB_USER=root
-DB_PASSWORD=your_db_pass
+DB_PASSWORD=your_password
 JWT_SECRET=supersecretkey
 PORT=3000
 ```
 
 ---
 
-### 3. Database
+### 🗃️ Database Setup
 
-1. Create database and import the SQL dump:
+1. Create a database:
 
-   ```sql
-   CREATE DATABASE alumni_db;
-   ```
-2. From `backend/SqlDatabase/alumni_db.sql`:
+```sql
+CREATE DATABASE alumni_db;
+```
 
-   ```bash
-   mysql -u root -p alumni_db < SqlDatabase/alumni_db.sql
-   ```
+2. Import SQL Dump:
+
+```bash
+mysql -u root -p alumni_db < backend/SqlDatabase/alumni_db.sql
+```
 
 ---
 
-### 4. Run Servers
+### 🔃 Run the Application
 
 #### Backend API
 
@@ -137,106 +141,123 @@ cd backend
 npm start
 ```
 
-* Runs on **[http://localhost:3000](http://localhost:3000)**
+> Runs at: [http://localhost:3000](http://localhost:3000)
 
-#### Frontend Client
+#### Frontend
 
 ```bash
 cd frontend
 npm run dev
 ```
 
-* Runs on **[http://localhost:5173](http://localhost:5173)** (or as configured)
+> Runs at: [http://localhost:5173](http://localhost:5173)
 
 ---
 
-## 📖 API Overview
+## 🔌 API Endpoints
 
-### Authentication `/auth`
+### Auth
 
-* `POST /auth/signup` — sign up alumnus/admin
-* `POST /auth/login`  — log in (sets JWT cookie)
-* `POST /auth/logout` — clear auth cookie
+```
+POST /auth/signup
+POST /auth/login
+POST /auth/logout
+```
 
-### Admin Routes (all under `/api/admin`)
+### Admin Panel `/api/admin`
 
-* **Dashboard**
+* `GET /dashboard/counts`
 
-  * `GET /api/admin/dashboard/counts`
+#### Users
 
-* **Users**
+```
+GET /users
+PUT /users
+DELETE /users/:id
+```
 
-  * `GET /api/admin/users`
-  * `PUT /api/admin/users`
-  * `DELETE /api/admin/users/:id`
+#### Careers
 
-* **Careers (Jobs)**
+```
+GET /jobs
+POST /jobs
+PUT /jobs/:id
+DELETE /jobs/:id
+```
 
-  * `GET /api/admin/jobs`
-  * `POST /api/admin/jobs`
-  * `PUT /api/admin/jobs/:id`
-  * `DELETE /api/admin/jobs/:id`
+#### Courses
 
-* **Courses**
+```
+GET /courses
+POST /courses
+PUT /courses/:id
+DELETE /courses/:id
+```
 
-  * `GET /api/admin/courses`
-  * `POST /api/admin/courses`
-  * `PUT /api/admin/courses/:id`
-  * `DELETE /api/admin/courses/:id`
+#### Events
 
-* **Events**
+```
+GET /events
+POST /events
+PUT /events/:id
+DELETE /events/:id
+POST /events/participate
+POST /eventcommits/check
+```
 
-  * `GET /api/admin/events`
-  * `POST /api/admin/events`
-  * `PUT /api/admin/events/:id`
-  * `DELETE /api/admin/events/:id`
-  * `POST /api/admin/events/participate`
-  * `POST /api/admin/eventcommits/check`
+#### Forums
 
-* **Forums**
+```
+GET /forums
+POST /forums
+PUT /forums/:id
+DELETE /forums/:id
+GET /forums/:topicId/comments
+POST /forums/:topicId/comments
+PUT /forums/comments/:id
+DELETE /forums/comments/:id
+```
 
-  * `GET /api/admin/forums`
-  * `POST /api/admin/forums`
-  * `PUT /api/admin/forums/:id`
-  * `DELETE /api/admin/forums/:id`
-  * `GET /api/admin/forums/:topicId/comments`
-  * `POST /api/admin/forums/:topicId/comments`
-  * `PUT /api/admin/forums/comments/:id`
-  * `DELETE /api/admin/forums/comments/:id`
+#### Gallery
 
-* **Gallery**
+```
+GET /gallery
+POST /gallery
+DELETE /gallery/:id
+```
 
-  * `GET /api/admin/gallery`
-  * `POST /api/admin/gallery`
-  * `DELETE /api/admin/gallery/:id`
+#### Alumni
 
-* **Alumni**
+```
+GET /alumni
+GET /alumni/:id
+PUT /alumni/status
+PUT /alumni/account
+DELETE /alumni/:id
+```
 
-  * `GET /api/admin/alumni`
-  * `GET /api/admin/alumni/:id`
-  * `PUT /api/admin/alumni/status`
-  * `DELETE /api/admin/alumni/:id`
-  * `PUT /api/admin/alumni/account`
+#### Settings
 
-* **Settings**
-
-  * `GET /api/admin/settings`
+```
+GET /settings
+```
 
 ---
 
 ## 🎨 Frontend Highlights
 
-* **Public pages**: Home, About, Gallery, Jobs, Forums, Signup, Login
-* **Protected**: Alumni account pages, comment posting
-* **Admin**: Full dashboard with CRUD operations
+* Public Pages: Home, About, Jobs, Gallery, Forums
+* Alumni Portal: Manage account, avatar, comments
+* Admin: Full dashboard and CRUD access
 
 ---
 
 ## 🤝 Contributing
 
-1. Fork & clone
-2. Create a branch (`git checkout -b feat/YourFeature`)
-3. Commit changes (`git commit -m "feat: ..."`), push, and open a PR
+1. Fork the repo
+2. Create a feature branch: `git checkout -b feat/YourFeature`
+3. Commit changes: `git commit -m "feat: ..."`
+4. Push and submit a PR
 
 ---
 
