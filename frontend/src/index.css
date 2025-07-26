@@ -1,0 +1,210 @@
+.bg-dark {
+    background-color: #343a40 !important;
+    /* --bs-text-opacity: 1;
+    color: rgba(var(--bs-white-rgb), var(--bs-text-opacity)) !important; */
+}
+
+a.bg-dark:hover,
+a.bg-dark:focus,
+button.bg-dark:hover,
+button.bg-dark:focus {
+    background-color: #1d2124 !important;
+}
+
+.logoimg {
+    width: 60px;
+    height: 60px;
+}
+
+.dlimg {
+    max-height: 70px;
+    margin-right: 6px;
+}
+
+.gimg {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.vaimg {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.alimg {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.headnavactive {
+    color: #ffffff !important;
+}
+
+.benefit-card {
+    transition: transform 0.3s ease-in-out;
+}
+
+.benefit-card:hover {
+    transform: scale(1.05);
+}
+
+@media (min-width: 1200px) {
+    .cutommargin {
+        margin-left: 100px;
+    }
+}
+
+@media (max-width: 768px) {
+    .col-lg-3 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+header.masthead {
+    padding-top: 10rem;
+    padding-bottom: calc(10rem - 4.5rem);
+    background: url(./assets/uploads/head_covergrad.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+    position: relative;
+    /* Add position relative */
+}
+
+header.masthead:before {
+    content: "";
+    background: #00000087;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+header.masthead>.container-fluid {
+    position: relative;
+    z-index: 2;
+    /* Ensure content appears above the shadow */
+}
+
+header.masthead>.container {
+    position: relative;
+    z-index: 2;
+}
+
+@media (min-width: 992px) {
+    header.masthead {
+        height: 60vh;
+        min-height: 60vh;
+        padding-top: 4.5rem;
+        padding-bottom: 0;
+    }
+}
+
+/* dashboard */
+/* .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.sidebar.open {
+    transform: translateX(0);
+}
+
+.main.sidebar-open {
+    margin-left: 240px;
+} */
+/* Add CSS transitions for sidebar */
+.sidebar {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    width: 240px;
+    /* Adjust width as needed */
+    height: 100%;
+    background-color: #fff;
+    /* Adjust background color as needed */
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(-240px);
+    /* Initially hidden */
+}
+
+.sidebar.open {
+    transform: translateX(0);
+}
+
+.main.sidebar-open {
+    /* margin-left: 240px; */
+}
+
+/* @media (max-width: 768px) {
+    .sidebar {
+        top: 0;
+    }
+  } */
+@media (max-width: 990px) {
+    .sidebar {
+        width: 170px;
+    }
+}
+
+
+@media (max-width: 425px) {
+    .cardpad {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .alimg {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+    }
+
+    .padzero {
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .galleryimg {
+        height: auto !important;
+    }
+
+    .jobbtn {
+        flex-wrap: wrap;
+    }
+
+    .forumbtn {
+        gap: 5px;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .page-section {
+        padding: 4rem 0 4rem 0;
+    }
+
+    .sidebar {
+        width: 170px;
+    }
+
+    .tablecard {
+        overflow-x: auto;
+
+    }
+
+    .cardwidth {
+        width: max-content;
+    }
+}

@@ -1,0 +1,20 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+    /* background: #000; */
+}
+.mylogoimg{
+    max-height: 50px;
+    max-width: 50px;
+}
+.cbg{
+    background: #f6f9ff;
+}
+.svglogo{
+    max-height: 100px;
+    max-width: 100px;
+}
+#myspan{
+    color: crimson;
+}
